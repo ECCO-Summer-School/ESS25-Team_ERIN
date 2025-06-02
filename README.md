@@ -28,72 +28,38 @@ This template provides the following suggested organizaiton structure for the pr
 
 (you can remove the content here and above from your final project README.md file so that it begins with the Project or Team Name title below)
 
-# Project or Team Name
+# stERic INvestigations (ERIN): How well does ECCO capture the steric sea-level signal?
 
-## Project Title and Introduction
+## Introduction
 
-Provide a brief introduction describing the proposed work. Be sure to also decribe what skills team members will get to learn and practice as part of this project.
+One of the key components of sea-level variability is the steric contribution, which arises from changes in ocean volume due to variations in temperature (thermosteric) and salinity (halosteric). Over the 20th and early-21st century, steric sea-level rates have risen from slightly negative values around 1900, to almost 2 mm yr-1 in 2021. Noteably, since the 1970s, when examining the individual components that contribute to global mean sea-level (GMSL) variability, the steric component has emerged as the dominant driver of the observed GMSL acceleration (Dangendorf et al., 2024). 
+
+Given its increasing importance, the overarching aim of this project was to compare the steric sea-level signal derived from the ECCO v4r4 ocean state estimate to the steric signal from the most recent GMSL reconstruction by Dangendorf et al. (2024), in order to assess the consistency between model-driven and observation-driven estimates of steric variability. 
 
 ### Collaborators
 
-List all participants on the project. Here is a good space to share your personal goals for the hackweek and things you can help with.
-
-| Name | Personal goals | Can help with | Role |
-| ------------- | ------------- | ------------- | ------------- |
-| Katherine J. | I want to learn specific python libraries for working with these data  | I can help with understanding our dataset, programming in R  | Project Lead |
-| Rosalind F. | Practice leading a software project | machine learning and python (scipy, scikit-learn) | Project Lead |
-| Alan T. | learning about your dataset | GitHub, Jupyter, cloud computing | Project Helper |
-| Rachel C. | learn to use github, resolve merge conflicts | I am familiar with our dataset | Team Member  |
-| ... | ... | ... | ... |
-| ... | ... | ... | ... |
+| Name | Personal goals |
+| ------------- | ------------- |
+| Erin Robson | To gain experience in accessing and analysing ECCO data products for sea-level research
 
 ### The problem
-
-Provide a few sentences describing the problem are you going to explore. If this is a technical exploration of software or data science methods, explain why this work is important in a broader context and specific applications of this work.
+Studies (e.g., Dangendorf et al., 2021) have highlighted limitations in understanding historical and projected sea-level changes in coastal regions. These limitations stem both from constraints of availible observations (e.g., the inability of satellite altimetry to resolve conditions near the coast), and from uncertainties owing to the fact that the impacts of large-scale ocean dynamics are not well constrained. While steric processes are the main driver of sea-level variability in the open ocean, this contribution diminishes at the coast due to shallower open depths. As such, coastal sea-level variability cannot be directly inferred from open-ocean steric changes. Many observation-driven estimates rely on tide-gauge records to provide measurements of relative sea-level at the coast, in an attempt to better constrain coastal variability. As the reconstruction from Dangendorf et al. (2024) utilises tide-gauge data, whereas the ECCO estimate is primarily open-ocean model-based, I wanted to investigate how the inclusion (or exclusion) of coastal data influences the characterisation of the steric sea-level signal. 
 
 ## Data and Methods
 
 ### Data
 
-Briefly describe and provide citations for the data that will be used (size, format, how to access).
+I used the ECCO version 4 release 4 (v4r4) output via the matlab toolbox gcmfaces (https://github.com/MITgcm/gcmfaces). The v4r4 datasets provide global coverage from 1992-2017 at a monthly timestep. The data for the GMSL reconstruction from Dangendorf et al. (2024) was accessed via https://zenodo.org/records/10621070, which provides the sea-level fields for each of the contributing components for both global and regional-scale reconstructions at an annual timestep (1900-2021). 
 
-### Existing methods
+### Methods/tools
 
-How would you or others traditionally try to address this problem? Provide any relevant citations to prior work.
+I isolated the steric signal from ECCO (SSL = absolute sea level [SSHDYN] - (manometric - IB [OBPNOPAB])) and the reconstruction (SDSL = RSOI - BaryGRD - GIA - IB), redgridded the ECCO output (360 x 360 x 312) onto the same grid as D24 (74742 x 26), and calculated the linear trend of each signal for 1992-2017 before running comparison analysis.
 
-### Proposed methods/tools
-
-What new approaches would you like to implement for addressing your specific question(s) or application(s)?
-
-Will your project use machine learning methods? If so, we invite you to create a [model card](model-card.md)!
-
-### Additional resources or background reading
-
-Optional: links to manuscripts or technical documents providing background information, context, or other relevant information.
-
-## Project goals and tasks
-
-### Project goals
-
-List the specific project goals or research questions you want to answer. Think about what outcomes or deliverables you'd like to create (e.g. a series of tutorial notebooks demonstrating how to work with a dataset, results of an anaysis to answer a science question, an example of applying a new analysis method, or a new python package).
-
-* Goal 1
-* Goal 2
-* ...
-
-### Tasks
-
-What are the individual tasks or steps that need to be taken to achieve each of the project goals identified above? What are the skills that participants will need or will learn and practice to complete each of these tasks? Think about which tasks are dependent on prior tasks, or which tasks can be performed in parallel.
-
-* Task 1 (all team members will learn to use GitHub)
-* Task 2 (team members will use the scikit-learn python library)
-  * Task 2a (assigned to team member A)
-  * Task 2b (assigned to team member B)
-* Task 3
-* ...
+Also used nearest-neighbour interpolation to find the closest point in the ECCO grid to the tide-gauge locations, in order to compare the steric signals directly on the coast. 
 
 ## Project Results
 
-Use this section to briefly summarize your project results. This could take the form of describing the progress your team made to answering a research question, developing a tool or tutorial, interesting things found in exploring a new dataset, lessons learned for applying a new method, personal accomplishments of each team member, or anything else the team wants to share.
-
-You could include figures or images here, links to notebooks or code elsewhere in the repository (such as in the [notebooks](notebooks/) folder), and information on how others can run your notebooks or code.
+* Pattern correlation between the two datasets = 0.51
+* Via trend differences (mm yr-1) between the ECCO output and the reconstruction, I found that ECCO is underestimating the steric trend in key locations, such as at the coast and in boundary current regions.
+* This is aligned with results from RMSE as well as temporal correlations at each grid point, which show low RMSE and strong positive correlations in the open ocean, and higher RMSE and weak/negative correlations at coasts, boundary currents, and across much of the Southern Ocean.
+* From basin-averaged pattern correlations and both tempoeral correlations and trend differences at tide-gauge locations, it is mostly consistent that in regions with lower trend differences at tide gauges, the datasets are better correlated. 
