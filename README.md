@@ -28,7 +28,7 @@ Studies (e.g., Dangendorf et al., 2021) have highlighted limitations in understa
 ### Data
 
 * **ECCO version 4 release 4 (v4r4) output via the matlab toolbox gcmfaces** (https://github.com/MITgcm/gcmfaces). The v4r4 datasets provide global coverage from 1992-2017 at a monthly timestep.
-* **GMSL reconstruction from Dangendorf et al. (2024**) was accessed via https://zenodo.org/records/10621070, which provides the sea-level fields for each of the contributing components for both global and regional-scale reconstructions at an annual timestep (1900-2021). 
+* **GMSL reconstruction from Dangendorf et al. (2024**) can be accessed via https://zenodo.org/records/10621070, which provides the sea-level fields for each of the contributing components for both global and regional-scale reconstructions at an annual timestep (1900-2021). 
 
 ### Methodology/work flow
 
