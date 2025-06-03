@@ -1,18 +1,13 @@
+# st<ins>E</ins><ins>R</ins>ic <ins>I</ins><ins>N</ins>vestigations (ERIN): How well does ECCO capture the steric sea-level signal?
 
 ## Files and folders in project repository
 
 * **`notebooks/`**
-<br> Notebooks that are considered delivered results for the project
+<br> notebook contains the core workflow
 * **`scripts/`**
-<br> functions or subroutines
-* `.gitignore`
-<br> This file sets the files that will be globally ignored by `git` for the project. (e.g. you may want git to ignore temporary files or large data files, [read more about ignoring files here](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files))
-* `environment.yml`
-<br> `conda` environment description needed to run this project.
+<br> functions and relevant .mat files
 * `README.md`
 <br> Description of the project
-
-# stERic INvestigations (ERIN): How well does ECCO capture the steric sea-level signal?
 
 ## Introduction
 
@@ -33,9 +28,10 @@ Studies (e.g., Dangendorf et al., 2021) have highlighted limitations in understa
 
 ### Data
 
-I used the ECCO version 4 release 4 (v4r4) output via the matlab toolbox gcmfaces (https://github.com/MITgcm/gcmfaces). The v4r4 datasets provide global coverage from 1992-2017 at a monthly timestep. The data for the GMSL reconstruction from Dangendorf et al. (2024) was accessed via https://zenodo.org/records/10621070, which provides the sea-level fields for each of the contributing components for both global and regional-scale reconstructions at an annual timestep (1900-2021). 
+* **ECCO version 4 release 4 (v4r4) output via the matlab toolbox gcmfaces** (https://github.com/MITgcm/gcmfaces). The v4r4 datasets provide global coverage from 1992-2017 at a monthly timestep.
+* **GMSL reconstruction from Dangendorf et al. (2024**) was accessed via https://zenodo.org/records/10621070, which provides the sea-level fields for each of the contributing components for both global and regional-scale reconstructions at an annual timestep (1900-2021). 
 
-### Methods/tools
+### Methodology/work flow
 
 - [x] Isolate steric SL signal from both ECCO (SSL = absolute sea level [SSHDYN] - (manometric - IB [OBPNOPAB])) and the reconstruction (SDSL = RSOI - BaryGRD - GIA - IB)
 - [x] Regrid ECCO output (360 x 360 x 312) onto the same grid as D24 (74742 x 26)
@@ -45,7 +41,7 @@ I used the ECCO version 4 release 4 (v4r4) output via the matlab toolbox gcmface
 - [x] Nearest neighbour to compare signals at tide-gauge locations
 
 ## Project Results
-[ERIN_ECCO_summaryslide.pdf](https://github.com/user-attachments/files/20576634/ERIN_ECCO_summaryslide.pdf)
+The one-slide summary of this project is available here: [ERIN_ECCO_summaryslide.pdf](https://github.com/user-attachments/files/20576634/ERIN_ECCO_summaryslide.pdf)
 
 ##
 * Dangendorf, S., Frederikse, T., Chafik, L., Klinck, J.M., Ezer, T. and Hamlington, B.D. (2021). Data-driven reconstruction reveals large-scale ocean circulation control on coastal sea level. Nature Climate Change, 11(6), pp.514–520. doi:https://doi.org/10.1038/s41558-021-01046-1.
