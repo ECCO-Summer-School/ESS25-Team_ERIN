@@ -24,10 +24,6 @@ This template provides the following suggested organizaiton structure for the pr
 * `model-card.md`
 <br> Description (following a metadata standard) of any machine learning models used in the project
 
-# Recommended content for your README.md file:
-
-(you can remove the content here and above from your final project README.md file so that it begins with the Project or Team Name title below)
-
 # stERic INvestigations (ERIN): How well does ECCO capture the steric sea-level signal?
 
 ## Introduction
@@ -53,13 +49,15 @@ I used the ECCO version 4 release 4 (v4r4) output via the matlab toolbox gcmface
 
 ### Methods/tools
 
-I isolated the steric signal from ECCO (SSL = absolute sea level [SSHDYN] - (manometric - IB [OBPNOPAB])) and the reconstruction (SDSL = RSOI - BaryGRD - GIA - IB), redgridded the ECCO output (360 x 360 x 312) onto the same grid as D24 (74742 x 26), and calculated the linear trend of each signal for 1992-2017 before running comparison analysis.
+I isolated the steric signal from ECCO (SSL = absolute sea level [SSHDYN] - (manometric - IB [OBPNOPAB])) and the reconstruction (SDSL = RSOI - BaryGRD - GIA - IB), redgridded the ECCO output (360 x 360 x 312) onto the same grid as D24 (74742 x 26), and calculated the linear trend of each signal for 1992-2017 before running various comparison analyses.
 
-Also used nearest-neighbour interpolation to find the closest point in the ECCO grid to the tide-gauge locations, in order to compare the steric signals directly on the coast. 
+Used nearest-neighbour interpolation to find the closest point in the ECCO grid to the tide-gauge locations, in order to compare the steric signals directly on the coast. 
 
 ## Project Results
+[ERIN_ECCO_summaryslide.pptx](https://github.com/user-attachments/files/20576222/ERIN_ECCO_summaryslide.pptx)
 
-* Pattern correlation between the two datasets = 0.51
-* Via trend differences (mm yr-1) between the ECCO output and the reconstruction, I found that ECCO is underestimating the steric trend in key locations, such as at the coast and in boundary current regions.
-* This is aligned with results from RMSE as well as temporal correlations at each grid point, which show low RMSE and strong positive correlations in the open ocean, and higher RMSE and weak/negative correlations at coasts, boundary currents, and across much of the Southern Ocean.
-* From basin-averaged pattern correlations and both tempoeral correlations and trend differences at tide-gauge locations, it is mostly consistent that in regions with lower trend differences at tide gauges, the datasets are better correlated. 
+  ## References
+Dangendorf, S., Frederikse, T., Chafik, L., Klinck, J.M., Ezer, T. and Hamlington, B.D. (2021). Data-driven reconstruction reveals large-scale ocean circulation control on coastal sea level. Nature Climate Change, 11(6), pp.514–520. doi:https://doi.org/10.1038/s41558-021-01046-1.
+
+Dangendorf, S., Sun, Q., Wahl, T., Thompson, P., Mitrovica, J.X. and Hamlington, B. (2024). Probabilistic reconstruction of sea-level changes and their causes since 1900. Earth system science data, 16(7), pp.3471–3494. doi:https://doi.org/10.5194/essd-16-3471-2024.
+
